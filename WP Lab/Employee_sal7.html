@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Information</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   
+    <form id="employeeForm">
+        <h2>Employee Information</h2>
+        <label for="basicSalary">Basic Salary:</label>
+        <input type="number" id="basicSalary" name="basicSalary" required><br>
+
+        <label for="da">Dearness Allowance (in %):</label>
+        <input type="number" id="da" name="da" required><br>
+
+        <label for="hra">House Rent Allowance (in %):</label>
+        <input type="number" id="hra" name="hra" required><br>
+
+        <label for="pf">Provident Fund (in %):</label>
+        <input type="number" id="pf" name="pf" required><br>
+
+        <label for="tax">Tax (in %):</label>
+        <input type="number" id="tax" name="tax" required><br><br>
+
+        <button type="button" onclick="calculatePay()">Calculate</button>
+    </form>
+
+    <div id="results">
+        <p id="grossPay"></p>
+        <p id="daAmount"></p>
+        <p id="hraAmount"></p>
+        <p id="pfAmount"></p>
+        <p id="taxAmount"></p>
+        <p id="deduction"></p>
+        <p id="netPay"></p>
+    </div>
+
+    <script>
+        function calculatePay() {
+            // Get values from the form
+            var basicSalary = parseFloat(document.getElementById("basicSalary").value);
+            var daPercent = parseFloat(document.getElementById("da").value);
+            var hraPercent = parseFloat(document.getElementById("hra").value);
+            var pfPercent = parseFloat(document.getElementById("pf").value);
+            var taxPercent = parseFloat(document.getElementById("tax").value);
+
+            // Calculate DA, HRA, PF, and Tax amounts
+            var daAmount = (daPercent / 100) * basicSalary;
+            var hraAmount = (hraPercent / 100) * basicSalary;
+            var pfAmount = (pfPercent / 100) * basicSalary;
+            var taxAmount = (taxPercent / 100) * (basicSalary + daAmount + hraAmount);
+            
+            // Calculate Gross Pay
+            var grossPay = basicSalary + daAmount + hraAmount;
+            
+            // Calculate Deduction
+            var totalDeduction = pfAmount + taxAmount;
+            
+            // Calculate Net Pay
+            var netPay = grossPay - totalDeduction;
+
+            // Display results
+            document.getElementById("daAmount").textContent = "DA Amount: " + daAmount.toFixed(2);
+            document.getElementById("hraAmount").textContent = "HRA Amount: " + hraAmount.toFixed(2);
+            document.getElementById("pfAmount").textContent = "PF Amount: " + pfAmount.toFixed(2);
+            document.getElementById("taxAmount").textContent = "Tax Amount: " + taxAmount.toFixed(2);
+            document.getElementById("grossPay").textContent = "Gross Pay: " + grossPay.toFixed(2);
+            document.getElementById("deduction").textContent = "Total Deduction: " + totalDeduction.toFixed(2);
+            document.getElementById("netPay").textContent = "Net Pay: " + netPay.toFixed(2);
+        }
+    </script>
+</body>
+</html>

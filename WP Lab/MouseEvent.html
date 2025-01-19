@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Text Color</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="text">Change My Color</h1>
+    <button onclick="setTextColor('red')">Red</button>
+    <button onclick="setTextColor('blue')">Blue</button>
+    <button onclick="setTextColor('green')">Green</button>
+    <button onclick="setTextColor('black')">Reset</button>
+
+    <script>
+        function setTextColor(color) {
+            document.getElementById('text').style.color = color;
+        }
+    </script>
+</body>
+</html

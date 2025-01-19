@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Expression Evaluation</title>
+    <script type="text/javascript">
+        function Evaluate() {
+            var enteredExpr = document.getElementById("expr").value;
+            try {
+                // Evaluating the entered expression
+                var result = eval(enteredExpr);
+                document.getElementById("result").value = result;
+            } catch (error) {
+                // Displaying an error message if the expression is invalid
+                document.getElementById("result").value = "Error";
+            }
+        }
+    </script>
+    <style>
+        .myForm {
+            color: black;
+            background-color: chartreuse;
+            padding: 10px;
+            border: 1px solid #ccc;
+            display: inline-block;
+            font-family: Arial, sans-serif;
+            margin-top: 20px;
+        }
+        input {
+            margin: 5px 0;
+            padding: 5px;
+        }
+        p {
+            margin: 0;
+            padding: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <form name="myForm" class="myForm">
+        <p>Enter any valid expression:</p> 
+        <input type="text" id="expr" /><br /><br />
+        <input type="button" value="Evaluate" onClick="Evaluate()" /><br /><br />
+        <p>Result of expression:</p> 
+        <input type="text" id="result" readonly /><br /><br />
+   

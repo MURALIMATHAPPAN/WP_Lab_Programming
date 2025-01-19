@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Properties Example</title>
+</head>
+<body>
+  <div id="parent">
+    <p id="first">First Paragraph</p>
+    <p id="second">Second Paragraph</p>
+    <p id="third">Third Paragraph</p>
+  </div>
+
+  <script>
+    // Selecting the parent node (the div)
+    const parentNode = document.getElementById("parent");
+    console.log("Parent Node:", parentNode); // Logs the parent <div> element
+
+    // firstChild: This property returns the first child node of a given element.
+    const firstChild = parentNode.firstChild;
+    console.log("First Child:", firstChild); // Logs the first child node (may include text nodes or comments)
+
+    // lastChild: This property returns the last child node of a given element.
+    const lastChild = parentNode.lastChild;
+    console.log("Last Child:", lastChild); // Logs the last child node (can include text nodes)
+
+    // nextSibling: This property returns the next sibling node of an element.
+    const firstPara = document.getElementById("first");
+    const nextSibling = firstPara.nextSibling;
+    console.log("Next Sibling of First Paragraph:", nextSibling); // Logs the next sibling node (could be a text node)
+
+    // nodeName: This property returns the name of the node (like "DIV", "P", "#text").
+    console.log("Node Name of Parent:", parentNode.nodeName); // Logs "DIV"
+    console.log("Node Name of First Child:", firstChild.nodeName); // Logs name of firstChild (often "#text")
+
+    // nodeType: This property returns the type of node (1 for element nodes, 3 for text nodes, etc.).
+    console.log("Node Type of Parent:", parentNode.nodeType); // Logs "1" (element node)
+    console.log("Node Type of First Child:", firstChild.nodeType); // Logs "3" (text node, if there's a text node)
+
+    // nodeValue: For text nodes, this property returns the value (text content).
+    const textNode = parentNode.firstChild; // First child may be a text node
+    console.log("Node Value of Text Node:", textNode.nodeValue); // Logs the text inside text nodes (null for elements)
+
+    // ownerDocument: This property returns the document object that owns the node.
+    console.log("Owner Document of Parent Node:", parentNode.ownerDocument); // Logs the entire document object
+
+    // parentNode: This property returns the parent node of a specified node.
+    const secondPara = document.getElementById("second");
+    console.log("Parent Node of Second Paragraph:", secondPara.parentNode); // Logs the parent node, which is the <div>
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Information</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   
+    <form id="employeeForm">
+        <h2>Employee Information</h2>
+        <label for="basicSalary">Basic Salary:</label>
+        <input type="number" id="basicSalary" name="basicSalary" required><br>
+
+        <label for="da">Dearness Allowance (in %):</label>
+        <input type="number" id="da" name="da" required><br>
+
+        <label for="hra">House Rent Allowance (in %):</label>
+        <input type="number" id="hra" name="hra" required><br>
+
+        <label for="pf">Provident Fund (in %):</label>
+        <input type="number" id="pf" name="pf" required><br>
+
+        <label for="tax">Tax (in %):</label>
+        <input type="number" id="tax" name="tax" required><br><br>
+
+        <button type="button" onclick="calculatePay()">Calculate</button>
+    </form>
+
+    <script>
+        function calculatePay() {
+            // Get values from the form
+            var basicSalary = parseFloat(document.getElementById("basicSalary").value);
+            var daPercent = parseFloat(document.getElementById("da").value);
+            var hraPercent = parseFloat(document.getElementById("hra").value);
+            var pfPercent = parseFloat(document.getElementById("pf").value);
+            var taxPercent = parseFloat(document.getElementById("tax").value);
+
+            // Calculate DA, HRA, PF, and Tax amounts
+            var daAmount = (daPercent / 100) * basicSalary;
+            var hraAmount = (hraPercent / 100) * basicSalary;
+            var pfAmount = (pfPercent / 100) * basicSalary;
+            var taxAmount = (taxPercent / 100) * (basicSalary + daAmount + hraAmount);
+            
+            // Calculate Gross Pay
+            var grossPay = basicSalary + daAmount + hraAmount;
+            
+            // Calculate Deduction
+            var totalDeduction = pfAmount + taxAmount;
+            
+            // Calculate Net Pay
+            var netPay = grossPay - totalDeduction;
+
+            // Display results in a dialog box
+            var resultMessage = `
+                Gross Pay: ${grossPay.toFixed(2)}\n
+                DA Amount: ${daAmount.toFixed(2)}\n
+                HRA Amount: ${hraAmount.toFixed(2)}\n
+                PF Amount: ${pfAmount.toFixed(2)}\n
+                Tax Amount: ${taxAmount.toFixed(2)}\n
+                Total Deduction: ${totalDeduction.toFixed(2)}\n
+                Net Pay: ${netPay.toFixed(2)}
+            `;
+            alert(resultMessage); // Show the results in an alert dialog box
+        }
+    </script>
+</body>
+</html>

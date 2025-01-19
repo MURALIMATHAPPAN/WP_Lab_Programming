@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum of N Natural Numbers</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Sum of N Natural Numbers</h2>
+    <form id="sumForm">
+        <label for="number">Enter a natural number (N):</label>
+        <input type="number" id="number" name="number" min="1" required>
+        <button type="button" onclick="calculateSum()">Calculate Sum</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        function sumOfNaturalNumbers(n) {
+            // Sum formula for the first N natural numbers
+            return (n * (n + 1)) / 2;
+        }
+
+        function calculateSum() {
+            // Get the value from the input field
+            var n = parseInt(document.getElementById("number").value);
+            var resultField = document.getElementById("result");
+            
+            // Ensure the input is a positive integer
+            if (n > 0) {
+                // Calculate the sum using the user-defined function
+                var sum = sumOfNaturalNumbers(n);
+                resultField.textContent = "Sum of the first " + n + " natural numbers is: " + sum;
+            } else {
+                resultField.textContent = "Please enter a positive integer.";
+            }
+        }
+    </script>
+</body>
+</html>

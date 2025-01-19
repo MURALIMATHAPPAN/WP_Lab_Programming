@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Employee Salary Details</title>
+    <script type="text/javascript">
+        function showSalary() {
+            // Correcting variable declarations and adding spaces for readability
+            var empname = document.getElementById("empname").value;
+            var empno = document.getElementById("empno").value;
+            var basic = parseInt(document.getElementById("basic").value);
+
+            // Calculations
+            var hra = basic * 0.4;
+            var da = basic * 0.6;
+            var gross = basic + hra + da;
+            var pf = gross * 0.13;
+            var tax = gross * 0.2;
+            var deductions = pf + tax;
+            var netsalary = gross - deductions;
+
+            // Creating a new window to display the salary details in a table
+            var newWindow = window.open("", "_blank", "width=600,height=400");
+            newWindow.document.write("<html><head><title>Employee Salary Details</title></head><body>");
+            newWindow.document.write("<table border='1'>");
+            newWindow.document.write("<tr><th colspan='2'>Employee Salary Details</th></tr>");
+            newWindow.document.write("<tr><td>Emp Name:</td><td>" + empname + "</td></tr>");
+            newWindow.document.write("<tr><td>Emp No:</td><td>" + empno + "</td></tr>");
+            newWindow.document.write("<tr><td>Basic Salary:</td><td>" + basic + "</td></tr>");
+            newWindow.document.write("<tr><td>HRA:</td><td>" + hra + "</td></tr>");
+            newWindow.document.write("<tr><td>DA:</td><td>" + da + "</td></tr>");
+            newWindow.document.write("<tr><td>Gross Salary:</td><td>" + gross + "</td></tr>");
+            newWindow.document.write("<tr><td>PF:</td><td>" + pf + "</td></tr>");
+            newWindow.document.write("<tr><td>Tax:</td><td>" + tax + "</td></tr>");
+            newWindow.document.write("<tr><td>Deductions:</td><td>" + deductions + "</td></tr>");
+            newWindow.document.write("<tr><td>Net Salary:</td><td>" + netsalary + "</td></tr>");
+            newWindow.document.write("</table>");
+            newWindow.document.write("</body></html>");
+            newWindow.document.close();
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <table border="1">
+            <tr>
+                <th colspan="2">Employee Details</th>
+            </tr>
+            <tr>
+                <th>Employee Name:</th>
+                <td><input type="text" id="empname" /></td>
+            </tr>
+            <tr>
+                <th>Employee No:</th>
+                <td><input type="text" id="empno" /></td>
+            </tr>
+            <tr>
+                <th>Basic Pay:</th>
+                <td><input type="number" id="basic" /></td>
+            </tr>
+        </table>
+        <br />
+        <input type="button" value="Show Salary Details" onClick="showSalary()" />
+    </form>
+</body>
+</html>

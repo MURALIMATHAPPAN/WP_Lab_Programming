@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop Example</title>
+    <style>
+        #p1 {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+            color: #fff;
+            text-align: center;
+            line-height: 100px;
+            margin-bottom: 20px;
+            cursor: grab;
+        }
+        #target {
+            width: 200px;
+            height: 200px;
+            border: 2px dashed #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <p id="p1" draggable="true" ondragstart="dragstartHandler(event)">
+        Drag me
+    </p>
+    <div id="target" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)">
+        Drop Zone
+    </div>
+
+    <script>
+        function dragstartHandler(ev) {
+            // Add the target element's id to the data transfer object
+            ev.dataTransfer.setData("text/plain", ev.target.id);
+            ev.dataTransfer.effectAllowed = "move";
+        }
+
+        function dragoverHandler(ev) {
+            ev.preventDefault();
+            ev.dataTransfer.dropEffect = "move";
+        }
+
+        function dropHandler(ev) {
+            ev.preventDefault();
+            const data = ev.dataTransfer.getData("text/plain");
+            const draggableElement = document.getElementById(data);
+
+            // Ensuring the target is the drop zone itself, not its children
+            const dropZone = ev.currentTarget;
+
+            // Only append if draggableElement exists and we're in the correct drop zone
+            if (draggableElement && dropZone.id === 'target') {
+                // Remove the draggable element from its original parent (if necessary)
+                draggableElement.style.position = "relative"; 
+                draggableElement.style.margin = "0"; // Reset margin if necessary
+                dropZone.innerHTML = ''; // Clear the drop zone
+                dropZone.appendChild(draggableElement); // Append the dragged element
+                dropZone.style.backgroundColor = draggableElement.style.backgroundColor; // Retain same background color
+            }
+            ev.dataTransfer.clearData();
+        }
+    </script>
+</body>
+</html>

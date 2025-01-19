@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<script>
+	function coordinate(event) {
+		let clientX = event.clientX;
+		let clientY = event.clientY;
+		let offsetX = event.offsetX;
+		let offsetY = event.offsetY;
+		let screenX = event.screenX;
+		let screenY = event.screenY;
+
+		document.getElementById("clientX").value = clientX;
+		document.getElementById("clientY").value = clientY;
+		document.getElementById("offsetX").value = offsetX;
+		document.getElementById("offsetY").value = offsetY;
+		document.getElementById("screenX").value = screenX;
+		document.getElementById("screenY").value = screenY;
+	}
+</script>
+
+<body onmousemove="coordinate(event)">
+	<p>X-coordinate (client): <input type="text" id="clientX"></p>
+	<p>Y-coordinate (client): <input type="text" id="clientY"></p>
+	<p>X-coordinate (offset): <input type="text" id="offsetX"></p>
+	<p>Y-coordinate (offset): <input type="text" id="offsetY"></p>
+	<p>X-coordinate (screen): <input type="text" id="screenX"></p>
+	<p>Y-coordinate (screen): <input type="text" id="screenY"></p>
+</body>
+
+</html>

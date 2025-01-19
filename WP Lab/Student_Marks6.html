@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grade Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form id="studentForm">
+        <h1>Student Grade Calculator</h1>
+        <label for="name">Student Name:</label>
+        <input type="text" id="name" name="name"><br>
+
+        <label for="subject1">Subject 1:</label>
+        <input type="number" id="subject1" name="subject1"><br>
+
+        <label for="subject2">Subject 2:</label>
+        <input type="number" id="subject2" name="subject2"><br>
+
+        <label for="subject3">Subject 3:</label>
+        <input type="number" id="subject3" name="subject3"><br>
+
+        <label for="subject4">Subject 4:</label>
+        <input type="number" id="subject4" name="subject4"><br>
+
+        <label for="subject5">Subject 5:</label>
+        <input type="number" id="subject5" name="subject5"><br>
+
+        <input type="button" value="Calculate" onclick="calculateGrade()">
+    
+    <p>Total Score: <span id="totalScore"></span></p>
+    <p>Average Score: <span id="averageScore"></span></p>
+    <p>Result: <span id="result"></span></p>
+    <p>Grade: <span id="grade"></span></p>
+
+    <script>
+        function calculateGrade() {
+            const subject1 = parseFloat(document.getElementById("subject1").value);
+            const subject2 = parseFloat(document.getElementById("subject2").value);
+            const subject3 = parseFloat(document.getElementById("subject3").value);
+            const subject4 = parseFloat(document.getElementById("subject4").value);
+            const subject5 = parseFloat(document.getElementById("subject5").value);
+
+            // Check if any subject score is less than 35
+            const failScore = 34;
+            if (subject1 < failScore || subject2 < failScore || subject3 < failScore || subject4 < failScore || subject5 < failScore) {
+                document.getElementById("totalScore").textContent = "Fail";
+                document.getElementById("averageScore").textContent = "Fail";
+                document.getElementById("result").textContent = "Fail";
+                document.getElementById("grade").textContent = "F";
+                return;
+            }
+
+            // Calculate total score
+            const totalScore = subject1 + subject2 + subject3 + subject4 + subject5;
+            document.getElementById("totalScore").textContent = totalScore;
+
+            // Calculate average score
+            const averageScore = totalScore / 5;
+            document.getElementById("averageScore").textContent = averageScore.toFixed(2);
+
+            // Determine result (pass/fail)
+            const passThreshold = 175;
+            const result = totalScore >= passThreshold ? "Pass" : "Fail";
+            document.getElementById("result").textContent = result;
+
+            // Determine grade
+            let grade = "";
+            if (totalScore >= 400) {
+                grade = "A";
+            } else if (totalScore >= 300) {
+                grade = "B";
+            } else if (totalScore >= 200) {
+                grade = "C";
+            } else if (totalScore >= 175) {
+                grade = "D";
+            } else {
+                grade = "F";
+            }
+            document.getElementById("grade").textContent = grade;
+        }
+    </script>
+    </form>
+</body>
+</html>

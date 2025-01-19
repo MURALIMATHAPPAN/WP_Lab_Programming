@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Effects Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="layer background"></div>
+        <div class="layer content">
+            <h1>Dynamic Effects</h1>
+            <button onclick="animateLayer()">Animate</button>
+        </div>
+        <div class="layer foreground"></div>
+    </div>
+
+    <script>
+        function animateLayer() {
+            const foreground = document.querySelector('.foreground');
+            foreground.classList.add('animate');
+            
+            // Remove the class after animation to reset
+            setTimeout(() => {
+                foreground.classList.remove('animate');
+            }, 2000); // Duration matches the animation duration
+        }
+    </script>
+</body>
+</html>

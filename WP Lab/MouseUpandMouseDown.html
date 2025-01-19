@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Basic Animation</title>
+    <style>
+        body {
+            overflow: hidden; /* Prevent scrollbars */
+        }
+        .ball {
+            position: absolute;
+            top: 50px;
+            height: 50px;
+            width: 50px;
+        }
+        @keyframes moveLeft {
+            from {
+                left: 100%;
+            }
+            to {
+                left: -100px;
+            }
+
+        }
+    </style>
+</head>
+<body>
+
+    <img id="layer1" class="ball" src="C:\Users\Murali M\OneDrive\Desktop\Sylabi\Web Programming\WP_Image\download (2).jpeg" alt="Ball 1"/>
+    <img id="layer2" class="ball" src="C:\Users\Murali M\OneDrive\Desktop\Sylabi\Web Programming\WP_Image\download.jpeg" alt="Ball 2"/>
+    <img id="layer3" class="ball" src="C:\Users\Murali M\OneDrive\Desktop\Sylabi\Web Programming\WP_Image\download (1).jpeg" alt="Ball 3" />
+    <img id="layer4" class="ball" src="C:\Users\Murali M\OneDrive\Desktop\Sylabi\Web Programming\WP_Image\download (2).jpeg" alt="Ball 4"/>
+    <img id="layer5" class="ball" src="C:\Users\Murali M\OneDrive\Desktop\Sylabi\Web Programming\WP_Image\download.jpeg" alt="Ball 5"/>
+    <img id="layer6" class="ball" src="C:\Users\Murali M\OneDrive\Desktop\Sylabi\Web Programming\WP_Image\download (1).jpeg" alt="Ball 6" />
+
+
+    <script type="text/javascript">
+        function animateBall(layer) {
+            var ball = document.getElementById(layer);
+            var randomDuration = Math.random() * 6 + 3; // Random duration between 2 and 5 seconds
+            var randomTop = Math.random() * (window.innerHeight - 50); // Random top position within viewport height
+
+            ball.style.top = randomTop + 'px';
+            ball.style.animation = `moveLeft ${randomDuration}s linear infinite`;
+        }
+
+        // Animate all three balls
+        animateBall('layer1');
+        animateBall('layer2');
+        animateBall('layer3');
+        animateBall('layer4');
+        animateBall('layer5');
+        animateBall('layer6');
+
+    </script>
+
+</body>
+</html>

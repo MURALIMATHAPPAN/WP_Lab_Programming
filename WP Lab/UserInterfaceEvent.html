@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Focus and Blur Event Example</title>
+    <script>
+        function onFocusEvent() {
+            console.log('field gained focus');
+        }
+        
+        function onBlurEvent() {
+            console.log('field lost focus');
+        }
+    </script>
+</head>
+
+<body>
+    <form>
+        <label for="username">Username: </label>
+        <input type="text" onfocus="onFocusEvent()" onblur="onBlurEvent()">
+        <br><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" onfocus="onFocusEvent()" onblur="onBlurEvent()">
+        <br><br>
+    </form>
+</body>
+</html>
